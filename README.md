@@ -1,6 +1,8 @@
-## vim-rubytidy.vim
+## rubytidy.vim
 
+Incomplete.
 
 ## installation
+
 ```vim
 ```
