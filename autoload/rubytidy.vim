@@ -15,14 +15,15 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! rubytidy#Align() range
-  normal `<
-  let begin = line(".")
-  normal `>
-  let end   = line(".")
-  " echo a:firstline
-  " echo a:lastline
-  " let lines = getline(a:firstline, a:lastline)
-  let lines = range(begin, end)
+  let pos = getpos(".")
+
+  let topp   = a:firstline
+  let bottom = a:lastline
+  if topp == bottom
+    let topp   = 0
+    let bottom = line("$")
+  endif
+  let lines = range(topp, bottom)
 
   let max_field_l = 0
   let new_list = []
@@ -46,6 +47,8 @@ function! rubytidy#Align() range
     call setline(pairs[4], printf(format, pairs[2], pairs[3]))
   endfor
   normal gg=G
+
+  call setpos(".", pos)
 endfunction
 
 let &cpo = s:save_cpo

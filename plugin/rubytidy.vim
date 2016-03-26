@@ -14,7 +14,7 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
-command! -range RubytidyAlign call rubytidy#Align()
+command! -range RubytidyAlign <line1>,<line2>call rubytidy#Align()
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
