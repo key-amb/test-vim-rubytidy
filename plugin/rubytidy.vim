@@ -6,10 +6,10 @@
 
 scriptencoding utf-8
 
-"if exists('g:loaded_rubytidy')
-    "finish
-"endif
-"let g:loaded_rubytidy = 1
+if exists('g:loaded_rubytidy')
+  finish
+endif
+let g:loaded_rubytidy = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
