@@ -37,8 +37,19 @@ function! rubytidy#Align() range
         let max_field_l = len(pairs[2])
       endif
       call add(new_list, pairs)
-    else
-      " echo "Not matched."
+      continue
+    endif
+
+    let pairs = matchlist(line, "^\\(\\s*\\)\\([\'\":a-zA-Z_]\\+\\)\\s*=>\\s*\\(.*\\)$")
+    if len(pairs) > 1
+      let pairs[4] = i
+      let pairs[3] = '=> ' . pairs[3]
+      " echo printf("%d matched. %s %s", pairs[4], pairs[2], pairs[3])
+      if len(pairs[2]) > max_field_l
+        let max_field_l = len(pairs[2])
+      endif
+      call add(new_list, pairs)
+      continue
     endif
   endfor
 
